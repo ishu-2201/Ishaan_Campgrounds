@@ -2,7 +2,7 @@ const Campground = require('../models/campground');
 
 
 //const { cloudinary } = require("../cloudinary/index");
-const { cloudinary } = require("cloudinary");
+const { cloudinary } = require("cloudinary/index");
 
 module.exports.index = async (req, res) => {
     const campgrounds = await Campground.find({});
@@ -18,6 +18,7 @@ module.exports.createCampground = async (req, res, next) => {
     campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     campground.author = req.user._id;
     await campground.save();
+    console.log(campground);
     req.flash('success', 'Successfully made a new campground!');
     res.redirect(`/campgrounds/${campground._id}`);
 }
@@ -33,6 +34,7 @@ module.exports.showCampground = async (req, res) => {
         req.flash('error', 'Cannot find that campground!');
         return res.redirect('/campgrounds');
     }
+    console.log(campground.images);
     res.render('campgrounds/show', { campground });
 }
 

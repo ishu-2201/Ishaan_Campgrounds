@@ -7,7 +7,7 @@ const { IsLoggedIn, isAuthor } = require("../middleware");
 const campgrounds = require("../controllers/campgrounds");
 const multer = require("multer");
 //const { storage } = require("../cloudinary/index");
-const { storage } = require("cloudinary");
+const { storage } = require("cloudinary/index");
 const upload = multer({ storage });
 
 router.get("/new", IsLoggedIn, campgrounds.renderNewForm);
