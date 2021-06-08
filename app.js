@@ -30,8 +30,8 @@ const MongoStore = require("connect-mongo")(session);
 // }));
 
 //const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
-//const dbUrl = process.env.DB_URL;
-const dbUrl = 'mongodb+srv://ishu_2201:EP9RrbHCtWFC9Nwf@cluster0.yxtl7.mongodb.net/ICS_DB?retryWrites=true&w=majority';
+const dbUrl = process.env.DB_URL;
+//const dbUrl = 'mongodb+srv://ishu_2201:EP9RrbHCtWFC9Nwf@cluster0.yxtl7.mongodb.net/ICS_DB?retryWrites=true&w=majority';
 
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
